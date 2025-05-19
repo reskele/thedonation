@@ -1,4 +1,4 @@
-@php $role = Auth::user()->role; @endphp
+@php $role = Auth::check() ? Auth::user()->role : null; @endphp
 
 <aside class="w-60 flex flex-col bg-slate-800 text-gray-200 h-full min-h-screen sticky -mt-15 top-0 p-4 space-y-4">
     <a href="{{ route('home') }}" class="text-xl font-bold text-green-300">ClothShare</a>

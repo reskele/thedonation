@@ -33,7 +33,6 @@ class DonationPostController extends Controller
         $clothingItems = ClothingItem::where('user_id', Auth::id())
         ->where('is_donated', 0)
         ->get();
-
         return view('donation_posts.create', compact('clothingItems'));
     }
 
@@ -44,6 +43,10 @@ class DonationPostController extends Controller
     {
         $validated = $request->validate([
             'clothing_item_id' => 'required|exists:clothing_items,id',
+            'description' => 'nullable|string|max:2000', // 400 words ~ 2000 chars
+            'gender' => 'required|in:male,female,other',
+            'region' => 'required|string|max:30',
+            'contacts' => 'required|string|max:255',
         ]);
 
         $clothingItem = ClothingItem::findOrFail($validated['clothing_item_id']);
@@ -56,6 +59,10 @@ class DonationPostController extends Controller
             'clothing_item_id' => $clothingItem->id,
             'donor_id' => Auth::id(),
             'status' => 'available',
+           'gender' => $validated['gender'],      
+           'description' => $validated['description'],      
+           'region' => $validated['region'],      
+           'contacts' => $validated['contacts'],
         ]);
 
         return redirect()->route('donation-posts.index')->with('success', 'Donation post created.');
@@ -67,6 +74,7 @@ class DonationPostController extends Controller
     public function show(DonationPost $donationPost)
     {
         $this->authorizeDonor($donationPost);
+        $donationPost->load('clothingItem');
         return view('donation_posts.show', compact('donationPost'));
     }
 

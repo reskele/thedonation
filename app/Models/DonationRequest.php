@@ -21,6 +21,9 @@ class DonationRequest extends Model
 
     protected $casts = [
         'created_at' => 'datetime',
+
+        'requested_at' => 'datetime',
+
     ];
 
     // Relationships

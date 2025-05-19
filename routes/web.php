@@ -42,8 +42,15 @@ Route::middleware(['auth'])->group(function () {
 // Admin Specific Routes
 Route::get('/donations', [AdminController::class, 'donationPosts'])->name('admin.donations');
 Route::get('/requests', [AdminController::class, 'donationRequests'])->name('admin.requests');
-// Edit Profile Route
-Route::get('/prifile', [ProfileController::class, 'edit'])->name('profile.edit');
+// // Edit Profile Route
+// Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+
+// Show edit form
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+
+// Handle form submission
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 
 

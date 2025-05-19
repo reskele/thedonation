@@ -5,13 +5,18 @@
         @csrf
 
         <x-input label="Name" name="name"/>
-        <select name="category" id="">
-            <option value="top">top</option>
-            <option value="hats">hats</option>
-            <option value="bottom">Foot Wear</option>
-            <option value="dress">dress</option>
+        <select name="category" id="category"  class="space-y-4 max-w-xl bg-white p-6 rounded shadow">
+            <option value="" disabled selected>select a category</option>
+            <option value="tops">Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="onepiece">Onepiece</option>
+            <option value="outerwear">outerWear</option>
+             <option value="sportswear">sportsWear</option>
+            <option value="sleepwear">sleepWear</option>
+            <option value="undergarments">undergarments</option>
             <option value="accesories">accesories</option>
-        </select>
+            <option value="footwear">footWear</option>
+        </select> 
         <x-input label="Color" name="color" />
         <x-input label="Size" name="size" />
         <x-input label="Brand" name="brand" />

@@ -5,9 +5,12 @@
 
         <div class="mt-4">
             <p><strong>Status:</strong> <span class="capitalize">{{ $donationRequest->status }}</span></p>
+            <p><strong>Category:</strong> {{$donationRequest->category }}</p>
             <p><strong>Size:</strong> {{ $donationRequest->donationPost->clothingItem->size }}</p>
-            <p><strong>Gender:</strong> {{ $donationRequest->donationPost->clothingItem->gender }}</p>
-            <p><strong>Description:</strong> {{ $donationRequest->donationPost->clothingItem->description }}</p>
+            <p><strong>Gender:</strong> {{ $donationRequest->donationPost->gender }}</p>
+            <p><strong>Description:</strong> {{ $donationRequest->donationPost->description }}</p>
+            <p><strong>Region:</strong> {{ $donationRequest->donationPost->region }}</p>
+            <p><strong>Contacts:</strong> {{ $donationRequest->donationPost->contacts }}</p>
         </div>
 
         <div class="mt-6 flex gap-4">

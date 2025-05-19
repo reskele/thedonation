@@ -19,7 +19,7 @@ class ClothingItemFactory extends Factory
         return [
             'user_id' => fake()->randomElement([1, 2, 3]), // Assuming user IDs 1, 2, and 3 exist
             'name' => fake()->word(),
-            'category' => fake()->randomElement(['top', 'bottom', 'dress', 'shoes', 'accessory']),
+            'category' => fake()->randomElement(['tops', 'bottoms', 'onepiece', 'outerwear','sportswear','sleepwear', 'undergarments','footwear', 'accessories']),
             'condition' => fake()->randomElement(['used', 'new']),
             'size' => fake()->optional()->randomElement(['S', 'M', 'L', 'XL']),
             'color' => fake()->optional()->colorName(),

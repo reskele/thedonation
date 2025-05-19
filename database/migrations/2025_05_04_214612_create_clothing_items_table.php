@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->enum('category', ['top', 'bottom', 'dress', 'shoes', 'accessory', 'hats']);
-            $table->enum('condition', ['used', 'new'])->default('used');
+            $table->enum('category', ['tops', 'bottoms','onepiece' ,'outerwear','sportswear','sleepwear', 'undergarments', 'accessories', 'footwear']);
+            $table->enum('condition', ['used', 'new','very new','normal','old'])->default('used');
             $table->string('size')->nullable();
             $table->string('color')->nullable();
             $table->text('description')->nullable();

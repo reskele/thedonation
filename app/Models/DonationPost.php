@@ -13,6 +13,10 @@ class DonationPost extends Model
     protected $fillable = [
         'clothing_item_id',
         'donor_id',
+        'region',
+        'description',
+        'gender',
+        'contacts',
         'status',
     ];
 

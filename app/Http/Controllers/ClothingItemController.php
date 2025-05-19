@@ -35,7 +35,7 @@ class ClothingItemController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'category' => 'required|in:top,hats,bottom,dress,shoes,accessory',
+            'category' => 'required|in:tops,bottoms,onepiece,outerwear,sportswear,sleepwear,undergarments,footwear,accessories',
             'color' => 'nullable|string|max:100',
             'size' => 'nullable|string|max:50',
             'brand' => 'nullable|string|max:100',

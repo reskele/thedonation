@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreignId('donor_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['available', 'claimed', 'closed'])->default('available');
             $table->timestamps();
+            $table->text('description')->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('region')->nullable();
+            $table->string('contacts')->nullable();
         });
     }
 
