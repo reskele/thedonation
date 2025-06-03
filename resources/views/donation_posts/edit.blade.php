@@ -22,7 +22,7 @@
         <div>
             <label class="block font-medium mb-1">Status</label>
             <select name="status" class="w-full border-gray-300 rounded shadow-sm">
-                @foreach (['available', 'pending', 'donated'] as $status)
+                @foreach (['available', 'donated'] as $status)
                     <option value="{{ $status }}" {{ $donationPost->status === $status ? 'selected' : '' }}>
                         {{ ucfirst($status) }}
                     </option>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('clothing_item_id')->constrained()->onDelete('cascade');
             $table->foreignId('donor_id')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['available', 'claimed', 'closed'])->default('available');
+            $table->enum('status', ['available', 'donated'])->default('available');
             $table->timestamps();
             $table->text('description')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();

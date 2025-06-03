@@ -26,7 +26,9 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'role' => 'required|in:donor,admin,recipient',
+            'registration_number' => 'required_if:role,recipient|max:255',
             'password' => 'required|string|min:3|confirmed',
+
         ]);
 
         // Create a new user

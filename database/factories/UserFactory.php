@@ -23,12 +23,17 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $role = fake()->randomElement(['donor', 'recipient', 'admin']);
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('1234'),
-            'role' => fake()->randomElement(['donor', 'recipient', 'admin']),
+            'role' => $role,
+            'registration_number' => $role === 'recipient'
+                ? str_pad(fake()->numberBetween(1, 99999999), 8, '0', STR_PAD_LEFT)
+                : null,
             'remember_token' => Str::random(10),
         ];
     }

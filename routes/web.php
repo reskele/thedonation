@@ -10,7 +10,9 @@ use App\Http\Controllers\OutfitPlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/story-page', [GuestController::class, 'story'])->name('stories');
 Route::get('/', [GuestController::class, 'home'])->name('home');
@@ -34,10 +36,16 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 // Dashboard Routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', fn() => view('dashboards.admin'))->name('admin.dashboard');
-    Route::get('/donor/dashboard', fn() => view('dashboards.donor'))->name('donor.dashboard');
-    Route::get('/recipient/dashboard', fn() => view('dashboards.recipient'))->name('recipient.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+    Route::get('/donor/dashboard', [DashboardController::class, 'donor'])->name('donor.dashboard');
+    Route::get('/recipient/dashboard', [DashboardController::class, 'recipient'])->name('recipient.dashboard');
 });
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin/dashboard', fn() => view('dashboards.admin'))->name('admin.dashboard');
+//     Route::get('/donor/dashboard', fn() => view('dashboards.donor'))->name('donor.dashboard');
+//     Route::get('/recipient/dashboard', fn() => view('dashboards.recipient'))->name('recipient.dashboard');
+// });
 
 // Admin Specific Routes
 Route::get('/donations', [AdminController::class, 'donationPosts'])->name('admin.donations');

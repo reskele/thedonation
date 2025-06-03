@@ -18,7 +18,7 @@
             @enderror
         </div>
 
-        <x-textarea name="story" label="Your Story" rows="6" required />
+        <x-textarea name="content" label="Your Story" rows="6" required />
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Submit
