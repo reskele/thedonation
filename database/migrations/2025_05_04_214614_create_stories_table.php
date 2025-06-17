@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('donation_request_id')->constrained()->onDelete('cascade');
+            $table->foreignId('donation_request_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('recipient_id')->constrained('users')->onDelete('cascade');
             $table->text('content');
             $table->timestamps();

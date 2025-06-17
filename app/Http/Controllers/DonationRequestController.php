@@ -71,6 +71,10 @@ class DonationRequestController extends Controller
             'requested_at' => now(),
         ]);
 
+        // After creating the request
+        $donationPost->status = 'requested';
+        $donationPost->save();
+
         return redirect()->route('donation-requests.index')->with('success', 'Donation request submitted.');
     }
 

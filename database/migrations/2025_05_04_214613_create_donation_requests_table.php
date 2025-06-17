@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('donation_post_id')->constrained()->onDelete('cascade');
             $table->foreignId('recipient_id')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['pending', 'accepted'])->default('pending');
             $table->timestamp('requested_at')->nullable();
             $table->timestamps();
         });

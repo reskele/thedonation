@@ -21,7 +21,7 @@ class DonationRequestFactory extends Factory
         return [
             'donation_post_id' => DonationPost::factory(), // Random donation post
             'recipient_id' => User::factory(), // Random recipient (user)
-            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']), // Random status
+            'status' => $this->faker->randomElement(['pending', 'accepted']), // Random status
             'requested_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),

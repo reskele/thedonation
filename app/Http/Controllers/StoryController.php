@@ -28,7 +28,7 @@ class StoryController extends Controller
      */
     public function create()
     {
-        $donationRequests = Auth::user()->donationRequests()->where('status', 'donated')->get();
+        $donationRequests = Auth::user()->donationRequests()->where('status', 'accepted')->get();
         return view('stories.create', compact('donationRequests'));
     }
 
@@ -44,14 +44,14 @@ class StoryController extends Controller
 
         $donationRequest = Auth::user()->donationRequests()->findOrFail($validated['donation_request_id']);
 
-        if ($donationRequest->status !== 'donated') {
+        if ($donationRequest->status !== 'accepted') {
             return back()->withErrors(['donation_request_id' => 'This donation request has not been fulfilled yet.']);
         }
 
         Story::create([
             'recipient_id' => Auth::id(),
             'donation_request_id' => $validated['donation_request_id'],
-            'story' => $validated['story'],
+            'content' => $validated['content'],
         ]);
 
         return redirect()->route('stories.index')->with('success', 'Thank you story submitted.');
@@ -83,11 +83,11 @@ class StoryController extends Controller
         $this->authorizeRecipient($story);
 
         $validated = $request->validate([
-            'story' => 'required|string|max:1000',
+            'content' => 'required|string|max:1000',
         ]);
 
         $story->update([
-            'story' => $validated['story'],
+            'content' => $validated['content'],
         ]);
 
         return redirect()->route('stories.index')->with('success', 'Story updated.');

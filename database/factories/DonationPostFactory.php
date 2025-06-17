@@ -21,7 +21,7 @@ class DonationPostFactory extends Factory
         return [
             'clothing_item_id' => ClothingItem::factory(), // Random clothing item
             'donor_id' => User::factory(), // Random donor (user)
-            'status' => $this->faker->randomElement(['available', 'claimed', 'closed']), // Random status
+            'status' => $this->faker->randomElement(['available', 'donated', 'closed', 'requested']), // Random status
             'created_at' => now(),
             'updated_at' => now(),
         ];

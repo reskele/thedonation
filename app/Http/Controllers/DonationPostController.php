@@ -137,4 +137,25 @@ class DonationPostController extends Controller
             abort(403, 'Unauthorized action.');
         }
     }
+
+    /**
+     * Accept a donation request.
+     */
+    public function acceptRequest($id)
+    {
+        $donationPost = DonationPost::findOrFail($id);
+
+        // Find the related request (assuming one-to-one for simplicity)
+        $request = $donationPost->requests()->where('status', 'pending')->first();
+
+        if ($request) {
+            $request->status = 'accepted';
+            $request->save();
+        }
+
+        $donationPost->status = 'donated';
+        $donationPost->save();
+
+        return redirect()->back()->with('success', 'Donation accepted and marked as donated.');
+    }
 }

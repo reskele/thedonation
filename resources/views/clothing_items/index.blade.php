@@ -6,21 +6,35 @@
         </a>
     </div>
 
+    <!-- Category Navigation -->
+    <div class="mb-6 flex gap-2">
+        @foreach($categories as $category)
+            <a href="{{ route('clothing-items.index', ['category' => $category]) }}"
+               class="px-4 py-2 rounded {{ $selectedCategory === $category ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700' }}">
+                {{ ucfirst($category) }}
+            </a>
+        @endforeach
+    </div>
+
+    <h2 class="text-xl font-bold mt-6 mb-2">{{ ucfirst($selectedCategory) }}</h2>
+
     @if ($clothingItems->isEmpty())
-        <p class="text-gray-600">You haven’t added any clothing items yet.</p>
+        <p class="text-gray-600">No items in this category yet.</p>
     @else
-        <div class="grid gap-4">
-            @foreach ($clothingItems as $item)
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            @foreach($clothingItems as $item)
                 <div class="bg-white p-4 rounded shadow flex items-center justify-between">
                     <div class="flex items-center gap-4">
-                        @if($item->image)
+                        @if($item && is_object($item) && $item->image)
                             <img src="{{ asset('storage/' . $item->image) }}" class="w-20 h-20 object-cover rounded">
                         @else
                             <div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center text-gray-500">No Image</div>
                         @endif
                         <div>
-                            <h2 class="text-lg font-semibold">{{ $item->category }}</h2>
-                            <p class="text-sm text-gray-500">{{ $item->size }} | {{ $item->color }} | {{ $item->condition }}</p>
+                            <div class="font-semibold">{{ $item->name ?? 'No name' }}</div>
+                            <div>Size: {{ $item->size ?? 'N/A' }}</div>
+                            <div>Color: {{ $item->color ?? 'N/A' }}</div>
+                            <p class="text-sm text-gray-500">{{ $item->condition ?? 'N/A' }}</p>
                         </div>
                     </div>
                     <div class="flex gap-3">
@@ -34,10 +48,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-
-        <div class="mt-6">
-            {{ $clothingItems->links() }}
         </div>
     @endif
 </x-layout>

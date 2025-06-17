@@ -41,11 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/recipient/dashboard', [DashboardController::class, 'recipient'])->name('recipient.dashboard');
 });
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/admin/dashboard', fn() => view('dashboards.admin'))->name('admin.dashboard');
-//     Route::get('/donor/dashboard', fn() => view('dashboards.donor'))->name('donor.dashboard');
-//     Route::get('/recipient/dashboard', fn() => view('dashboards.recipient'))->name('recipient.dashboard');
-// });
+
 
 // Admin Specific Routes
 Route::get('/donations', [AdminController::class, 'donationPosts'])->name('admin.donations');
@@ -80,3 +76,4 @@ Route::resource('donation-posts', DonationPostController::class)->middleware('au
 
 // ClothingItem Routes
 Route::resource('clothing-items', ClothingItemController::class)->middleware('auth');
+Route::post('/donation-posts/{id}/accept', [DonationPostController::class, 'acceptRequest'])->name('donation-posts.accept');

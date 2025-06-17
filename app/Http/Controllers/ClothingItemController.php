@@ -14,10 +14,23 @@ class ClothingItemController extends Controller
     /**
      * Display a listing of the user's clothing items.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clothingItems = ClothingItem::where('user_id', Auth::id())->latest()->paginate(10);
-        return view('clothing_items.index', compact('clothingItems'));
+        // Get all unique categories for the user
+        $categories = \App\Models\ClothingItem::where('user_id', Auth::id())
+            ->select('category')
+            ->distinct()
+            ->pluck('category');
+
+        // Get the selected category from the query string, or default to the first
+        $selectedCategory = $request->query('category', $categories->first());
+
+        // Get items for the selected category
+        $clothingItems = \App\Models\ClothingItem::where('user_id', Auth::id())
+            ->where('category', $selectedCategory)
+            ->get();
+
+        return view('clothing_items.index', compact('clothingItems', 'categories', 'selectedCategory'));
     }
 
     /**

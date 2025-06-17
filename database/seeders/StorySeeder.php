@@ -14,11 +14,13 @@ class StorySeeder extends Seeder
      */
     public function run(): void
     {
-        DonationRequest::where('status', 'approved')->get()->each(function ($request) {
-            Story::factory()->create([
-                'donation_request_id' => $request->id,
-                'recipient_id' => $request->recipient_id,
-            ]);
-        });
+
+         Story::factory(20)->create();
+        // DonationRequest::where('status', 'approved')->get()->each(function ($request) {
+        //     Story::factory()->create([
+        //         'donation_request_id' => $request->id,
+        //         'recipient_id' => $request->recipient_id,
+        //     ]);
+        // });
     }
 }

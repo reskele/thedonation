@@ -19,15 +19,7 @@ class DonationRequestSeeder extends Seeder
 
         DonationPost::all()->each(function ($post) use ($users) {
             if ($users->isEmpty()) return;
-
-            $status = collect(['pending', 'approved', 'rejected'])->random();
-
-            DonationRequest::factory()->create([
-                'donation_post_id' => $post->id,
-                'recipient_id' => $users->random()->id,
-                'status' => $status,
-                'requested_at' => now(),
-            ]);
+            DonationRequest::factory(5)->create();
         });
     }
 }

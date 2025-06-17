@@ -15,7 +15,7 @@
                     <h2 class="font-semibold text-lg">
                         {{ $story->donationRequest->donationPost->clothingItem->name ?? 'Item' }}
                     </h2>
-                    <p class="mt-2 text-gray-700">{{ Str::limit($story->story, 150) }}</p>
+                    <p class="mt-2 text-gray-700">{{ Str::limit($story->content, 150) }}</p>
                     <div class="mt-4 flex gap-3">
                         <a href="{{ route('stories.show', $story) }}" class="text-blue-500 hover:underline">View</a>
                         <a href="{{ route('stories.edit', $story) }}" class="text-yellow-500 hover:underline">Edit</a>
