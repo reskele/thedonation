@@ -52,13 +52,13 @@
     {{-- User Stories --}}
     <section class="py-10 bg-gray-100">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">How ClothesShare is Changing Lives</h2>
+            <h2 class="text-3xl font-bold mb-12">How ClothShare is Changing Lives</h2>
 
             @if($stories->count())
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @foreach($stories as $story)
                         <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
-                            <img src="{{ $story->recipient->image ? asset('storage/' . $story->recipient->image) : asset('storage/images/profiles/default.jpg') }}"
+                            <img src="{{ $story->recipient->image ? asset('storage/' . $story->recipient->image) : asset('storage/images/profiles/heart.jpg') }}"
                                 alt="User Story"
                                 class="w-24 h-24 rounded-full mx-auto -mt-16 mb-4 border-2 border-green-800 object-cover">
 

@@ -34,8 +34,8 @@
                 <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="text-sm text-gray-400">
-                <a href="#" class="px-2 hover:text-white">Privacy</a>|
-                <a href="#" class="px-2 hover:text-white">Terms</a>|
+                <a href="{{ route('privacy') }}" class="px-2 hover:text-white">Privacy Terms</a>|
+                <a href="{{ route('about') }}" class="px-2 hover:text-white">About</a>|
                 <a href="#" class="px-2 hover:text-white">Contact</a>
             </div>
         </div>

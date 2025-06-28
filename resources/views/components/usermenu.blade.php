@@ -13,7 +13,7 @@
           @click.prevent="dropdownOpen = ! dropdownOpen"
         >
           <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
-            <img src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('storage/images/profiles/default.jpg') }}"/>
+            <img src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('storage\images\profiles\heart.jpg') }}"/>
         </span>
 
         </a>

@@ -13,10 +13,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-
+// Stories,About,Privacy terms,Home Routes
 Route::get('/story-page', [GuestController::class, 'story'])->name('stories');
 Route::get('/', [GuestController::class, 'home'])->name('home');
 Route::view('/about', 'about')->name('about');
+Route::view('/privacy', 'privacyterms')->name('privacy');
 
 // Registration Routes
 Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');

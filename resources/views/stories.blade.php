@@ -14,7 +14,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @foreach($stories as $story)
                         <div class="bg-white p-6 rounded-lg mt-8 shadow-md hover:shadow-xl transition">
-                            <img src="{{ $story->recipient->image ? asset('storage/' . $story->recipient->image) : asset('storage/images/profiles/default.jpg') }}"
+                            <img src="{{ $story->recipient->image ? asset('storage/' . $story->recipient->image) : asset('storage/images/profiles/heart.jpg') }}"
                                  alt="User Story"
                                  class="w-24 h-24 rounded-full mx-auto -mt-16 mb-4 border-2 border-green-800 object-cover">
 
